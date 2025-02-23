@@ -1,0 +1,18 @@
+---
+// Código JavaScript
+const response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
+const data = await response.json();
+---
+<!-- HTML -->
+<div>
+  <h1>{data.name}</h1>
+  <img src={data.sprites.front_default} alt={data.name} />
+  <p>Altura: {data.height}</p>
+  <p>Peso: {data.weight}</p>
+  <h2>Habilidades:</h2>
+  <ul>
+    {data.abilities.map((ability: { ability: { name: string } }) => (
+      <li>{ability.ability.name}</li>
+    ))}
+  </ul>
+</div>
